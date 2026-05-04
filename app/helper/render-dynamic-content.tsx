@@ -2,7 +2,7 @@ import dynamic from "next/dynamic";
 import React, { ComponentType } from "react";
 
 // Dynamic imports for better code splitting
-const Hero = dynamic(() => import("../components/Hero"));
+const Hero = dynamic(() => import("../components/sections/Hero"));
 
 
 // Base type for all dynamic zone blocks

@@ -10,6 +10,57 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+  --breakpoint-3xl: 1800px;
+  --breakpoint-4xl: 2000px;
+}
+
+@layer components {
+  .container {
+    max-width: 100%;
+    margin-inline: auto;
+    padding-inline: 16px;
+  }
+
+  @media (min-width: var(--breakpoint-md)) {
+    .container {
+      max-width: 720px;
+      padding-inline: 0;
+    }
+  }
+
+  @media (min-width: var(--breakpoint-lg)) {
+    .container {
+      max-width: 940px;
+    }
+  }
+
+  @media (min-width: var(--breakpoint-xl)) {
+    .container {
+      max-width: 1120px;
+    }
+  }
+
+  @media (min-width: var(--breakpoint-2xl)) {
+    .container {
+      max-width: 1240px;
+    }
+  }
+
+  @media (min-width: var(--breakpoint-3xl)) {
+    .container {
+      max-width: 1320px;
+    }
+  }
+
+  @media (min-width: var(--breakpoint-4xl)) {
+    .container {
+      max-width: 1440px;
+    }
+  }
 }
 
 @media (prefers-color-scheme: dark) {
