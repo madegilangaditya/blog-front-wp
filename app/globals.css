@@ -5,61 +5,76 @@
   --foreground: #171717;
 }
 
-@theme inline {
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    @apply text-base leading-relaxed;
+  }
+
+  h1 {
+    @apply text-4xl font-bold leading-tight;
+  }
+
+  h2 {
+    @apply text-[40px] font-semibold leading-tight;
+  }
+
+  h3 {
+    @apply text-[32px] font-semibold;
+  }
+
+  h4 {
+    @apply text-[24px] font-medium;
+  }
+
+  h5 {
+    @apply text-[20px] font-medium;
+  }
+
+  p {
+    @apply text-base leading-relaxed;
+  }
+}
+
+@theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-brand-yellow: #F4C325;
+  --font-nunito: var(--font-nunito);
+  --font-mono: var(--font-nunito);
+  --font-sans: var(--font-nunito);
   --breakpoint-md: 768px;
   --breakpoint-lg: 1024px;
   --breakpoint-xl: 1280px;
   --breakpoint-2xl: 1536px;
   --breakpoint-3xl: 1800px;
-  --breakpoint-4xl: 2000px;
+  --breakpoint-4xl: 2000px; 
 }
 
-@layer components {
-  .container {
-    max-width: 100%;
-    margin-inline: auto;
-    padding-inline: 16px;
+@utility container{
+  margin-inline: auto;
+  padding-inline: 16px;
+  max-width: 100%;
+  @variant md {
+    max-width: 720px;
+    padding-inline: 0;
   }
-
-  @media (min-width: var(--breakpoint-md)) {
-    .container {
-      max-width: 720px;
-      padding-inline: 0;
-    }
+  @variant lg {
+    max-width: 940px;
   }
-
-  @media (min-width: var(--breakpoint-lg)) {
-    .container {
-      max-width: 940px;
-    }
+  @variant xl {
+    max-width: 1120px;
   }
-
-  @media (min-width: var(--breakpoint-xl)) {
-    .container {
-      max-width: 1120px;
-    }
+  @variant 2xl {
+    max-width: 1240px;
   }
-
-  @media (min-width: var(--breakpoint-2xl)) {
-    .container {
-      max-width: 1240px;
-    }
+  @variant 3xl {
+    max-width: 1320px;
   }
-
-  @media (min-width: var(--breakpoint-3xl)) {
-    .container {
-      max-width: 1320px;
-    }
-  }
-
-  @media (min-width: var(--breakpoint-4xl)) {
-    .container {
-      max-width: 1440px;
-    }
+  @variant 4xl {
+    max-width: 1440px;
   }
 }
 
@@ -73,5 +88,4 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
 }

@@ -1,5 +1,5 @@
-import { getPage } from "../helper/wpgraphql";
-import RenderSections from "../helper/render-dynamic-component-wp";
+import { getPage } from "../../helper/wpgraphql";
+import RenderSections from "../../helper/render-dynamic-component-wp";
 
 export default async function Page({ params }: any) {
   const resolvedParams = await params;
