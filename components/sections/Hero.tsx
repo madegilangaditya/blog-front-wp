@@ -61,14 +61,14 @@ export default function Hero({ data }: HeroProps) {
       {/* Content */}
       <motion.div
         style={{ y, opacity }}
-        className="relative z-10 text-center text-white"
+        className="container relative z-10 text-center text-white"
       >
-        <h1 className="text-5xl md:text-7xl font-bold mb-6">
+        <h1 className="text-5xl md:text-7xl 2xl:text-[120px] font-normal mb-2.5 leading-[1.1]">
           {data.title || "I'm John Arnold"}
         </h1>
 
         {typedStrings.length > 0 && (
-          <h2 className="text-2xl md:text-3xl font-light">
+          <div className="text-2xl md:text-[24px]">
             <ReactTyped
               strings={typedStrings}
               typeSpeed={60}
@@ -76,7 +76,7 @@ export default function Hero({ data }: HeroProps) {
               backDelay={1500}
               loop
             />
-          </h2>
+          </div>
         )}
       </motion.div>
     </section>
