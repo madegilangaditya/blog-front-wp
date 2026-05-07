@@ -1,6 +1,8 @@
-import type { ComponentType } from "react";
+'use client'
+import { Component, type ComponentType } from "react";
 import Hero from "../components/sections/Hero";
 import Bio from "../components/sections/Bio";
+import ServicesCard from "../components/sections/ServicesCard";
 
 type Section = {
   __typename: string;
@@ -10,6 +12,7 @@ type Section = {
 const sectionComponents: Record<string, ComponentType<any>> = {
   ComponentsSectionsBannerLayout: Hero,
   ComponentsSectionsBioLayout: Bio,
+  ComponentsSectionsServicesCardLayout: ServicesCard,
   // ComponentsSectionsTextLayout: TextSection,
   // ComponentsSectionsGalleryLayout: GallerySection,
 };

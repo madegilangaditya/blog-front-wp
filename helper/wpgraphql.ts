@@ -85,7 +85,7 @@ export const GET_PAGE_ACF = `
             }
           }
           ... on ComponentsSectionsBioLayout {
-          image {
+            image {
               node {
                 sourceUrl
                 altText
@@ -104,6 +104,26 @@ export const GET_PAGE_ACF = `
             skill {
               skillName
               rate
+            }
+          }
+          ... on ComponentsSectionsServicesCardLayout{
+            title
+            subtitle
+            backgroundImage{
+              node{
+                sourceUrl
+                altText
+              }
+            }
+            services{
+              iconImage{
+                node{
+                  sourceUrl
+                  altText
+                }
+              }
+              title
+              description
             }
           }
         }
