@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localfont from "next/font/local";
 import "./globals.css";
+import LenisScrollProvider from "@/components/partials/LenisScrollProvider";
 
 const nunito = localfont({
   src: [
@@ -44,7 +45,9 @@ export default function RootLayout({
       <body
         className={`antialiased`}
       >
-        {children}
+        <LenisScrollProvider>
+          {children}
+        </LenisScrollProvider>
       </body>
     </html>
   );
