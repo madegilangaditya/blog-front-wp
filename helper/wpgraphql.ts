@@ -126,17 +126,33 @@ export const GET_PAGE_ACF = `
               description
             }
           }
+          ... on ComponentsSectionsFeaturedProjectLayout{
+            title
+            subtitle
+            getDataType
+            manualSelect{
+              nodes{
+                ... on Project{
+                  id
+                  slug
+                  title
+                  uri
+                }
+              }
+            }
+            maximumProjects
+            addMoreProject
+            moreProjectButton{
+              target
+              title
+              url
+            }
+          }
         }
       }
     }
   }
 `;
-
-// ---
-
-// ## ----------------------
-// ## Helper Function
-// ## ----------------------
 
 export type PageData = {
   page: {
@@ -149,6 +165,64 @@ export type PageData = {
     };
   } | null;
 };
+
+// Get Projects
+
+export const GET_PROJECTS = `
+  query GetProjects($first: Int = 6) {
+    projects(
+      first: $first
+      where: {
+        status: PUBLISH
+        orderby: {
+          field: DATE
+          order: DESC
+        }
+      }
+    ) {
+      nodes {
+        id
+        slug
+        title
+        uri
+        featuredImage {
+          node {
+            sourceUrl
+            altText
+          }
+        }
+      }
+    }
+  }
+`;
+
+export type ProjectNode = {
+  id: string;
+  slug: string;
+  title: string;
+  uri: string;
+  featuredImage?: {
+    node?: {
+      sourceUrl: string;
+      altText?: string;
+    };
+  };
+};
+
+type ProjectsData = {
+  projects: {
+    nodes: ProjectNode[];
+  };
+};
+
+export async function getProjects(first = 6) {
+  const data = await fetchWPGraphQL<ProjectsData>(GET_PROJECTS, {
+    first,
+  });
+
+  return data.projects.nodes;
+}
+
 
 export async function getPage(uri: string) {
   return fetchWPGraphQL<PageData>(GET_PAGE_ACF, { uri });

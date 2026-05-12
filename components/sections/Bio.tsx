@@ -1,7 +1,7 @@
 "use client";
 
 import { sanitize } from "@/helper/sanitize";
-import { motion, useMotionValueEvent, useScroll } from "framer-motion";
+import { motion } from "framer-motion";
 import { useRef } from "react";
 
 type SkillData ={
@@ -36,12 +36,7 @@ type BioProps = {
 export default function Bio({ data }: BioProps) {
     const ref = useRef<HTMLDivElement>(null);
 
-    const { scrollY } = useScroll({
-        target: ref,
-    });
-    useMotionValueEvent(scrollY, "change", (latest) => {
-        console.log("Page scroll: ", latest)
-    })
+   
 
     return (
         <section id="section-about" className="py-25">

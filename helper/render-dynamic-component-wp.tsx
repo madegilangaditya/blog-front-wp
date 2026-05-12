@@ -1,8 +1,8 @@
-'use client'
-import { Component, type ComponentType } from "react";
+import { type ComponentType } from "react";
 import Hero from "../components/sections/Hero";
 import Bio from "../components/sections/Bio";
 import ServicesCard from "../components/sections/ServicesCard";
+import FeaturedProject from "@/components/sections/FeaturedProject";
 
 type Section = {
   __typename: string;
@@ -13,6 +13,7 @@ const sectionComponents: Record<string, ComponentType<any>> = {
   ComponentsSectionsBannerLayout: Hero,
   ComponentsSectionsBioLayout: Bio,
   ComponentsSectionsServicesCardLayout: ServicesCard,
+  ComponentsSectionsFeaturedProjectLayout: FeaturedProject,
   // ComponentsSectionsTextLayout: TextSection,
   // ComponentsSectionsGalleryLayout: GallerySection,
 };
@@ -21,7 +22,7 @@ type RenderSectionsProps = {
   sections?: Section[];
 };
 
-export default function RenderSections({ sections = [] }: RenderSectionsProps) {
+export default async function RenderSections({ sections = [] }: RenderSectionsProps) {
   return (
     <>
       {sections.map((section, index) => {

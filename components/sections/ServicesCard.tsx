@@ -1,4 +1,4 @@
-
+'use client'
 
 import { Parallax, ParallaxProvider} from "react-scroll-parallax";
 
@@ -35,7 +35,7 @@ export default function ServicesCard({ data }: ServicesProps) {
     <ParallaxProvider>
         <section className="services-section py-[100px] relative overflow-hidden" 
       >
-            <Parallax speed={-40} style={{ backgroundImage: `url(${backgroundImage})` }} className="absolute top-0 left-0 w-full h-full bg-cover bg-center -z-10 before:bg-[rgba(20,20,20,0.7)] before:w-full before:h-full before:absolute before:top-0" />
+            <Parallax speed={-40} style={{ backgroundImage: `url(${backgroundImage})` }} className="absolute top-0 left-0 w-full h-[calc(100%+200px)] bg-cover bg-center -z-10 before:bg-[rgba(20,20,20,0.7)] before:w-full before:h-full before:absolute before:top-0" />
 
             <div className="container relative text-center">
                 {data.subtitle && <p className="text-sm text-brand-yellow font-bold mb-2">{data.subtitle}</p>}
