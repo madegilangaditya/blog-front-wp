@@ -137,6 +137,12 @@ export const GET_PAGE_ACF = `
                   slug
                   title
                   uri
+                  featuredImage {
+                    node {
+                      sourceUrl
+                      altText
+                    }
+                  } 
                 }
               }
             }

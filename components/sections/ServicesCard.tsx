@@ -33,7 +33,7 @@ export default function ServicesCard({ data }: ServicesProps) {
 
   return (
     <ParallaxProvider>
-        <section className="services-section py-[100px] relative overflow-hidden" 
+        <section className="services-section py-25 relative overflow-hidden" 
       >
             <Parallax speed={-40} style={{ backgroundImage: `url(${backgroundImage})` }} className="absolute top-0 left-0 w-full h-[calc(100%+200px)] bg-cover bg-center -z-10 before:bg-[rgba(20,20,20,0.7)] before:w-full before:h-full before:absolute before:top-0" />
 
@@ -41,7 +41,7 @@ export default function ServicesCard({ data }: ServicesProps) {
                 {data.subtitle && <p className="text-sm text-brand-yellow font-bold mb-2">{data.subtitle}</p>}
                 {data.title && <h2 className="font-medium mb-6 text-white">{data.title}</h2>}
                 {data.services && (
-                    <div className="grid lg:grid-cols-3 gap-[30px] mt-10">
+                    <div className="grid lg:grid-cols-3 gap-7.5 mt-10">
                         {data.services.map((service, index) => (
                             <div key={index} className="service-card bg-[rgba(255,255,255,0.1)] p-10 rounded-lg flex flex-col items-center text-center gap-5 text-white">
                                 {service.iconImage?.node?.sourceUrl && (

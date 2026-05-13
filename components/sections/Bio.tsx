@@ -2,6 +2,7 @@
 
 import { sanitize } from "@/helper/sanitize";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { useRef } from "react";
 
 type SkillData ={
@@ -56,9 +57,16 @@ export default function Bio({ data }: BioProps) {
                         {data.title && <h2 className="font-medium mb-6">{data.title}</h2>}
                         {data.description && <div className="text-gray-600 mb-4 leading-relaxed [&_p:not(:last-child)]:mb-5" dangerouslySetInnerHTML={{ __html: sanitize(data.description) }} />}
                         {data.addButton && data.buttonLink?.url && (
-                            <a href={data.buttonLink.url} className="inline-block bg-black text-white px-6 py-3 rounded-md text-sm font-medium hover:bg-gray-800 transition">
+                            <Link href={data.buttonLink.url} className="inline-block bg-[#202020] text-white px-6 py-3 rounded-md text-xs font-bold uppercase hover:opacity-80 transition hover:shadow-[8px_8px_40px_0px_rgba(0,0,0,0.3)]"
+                                target={data.buttonLink.target || "_self"}
+                                rel={
+                                    data.buttonLink?.target === "_blank"
+                                    ? "noopener noreferrer"
+                                    : undefined
+                                }
+                            >
                                 {data.buttonLink.title || "DOWNLOAD PDF"}
-                            </a>
+                            </Link>
                         )}
                     </div>
                 </div>
