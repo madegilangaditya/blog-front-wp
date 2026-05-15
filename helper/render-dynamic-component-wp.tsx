@@ -3,6 +3,7 @@ import Hero from "../components/sections/Hero";
 import Bio from "../components/sections/Bio";
 import ServicesCard from "../components/sections/ServicesCard";
 import FeaturedProject from "@/components/sections/FeaturedProject";
+import ExperiencesHistory from "@/components/sections/ExperiencesHistory";
 
 type Section = {
   __typename: string;
@@ -14,6 +15,7 @@ const sectionComponents: Record<string, ComponentType<any>> = {
   ComponentsSectionsBioLayout: Bio,
   ComponentsSectionsServicesCardLayout: ServicesCard,
   ComponentsSectionsFeaturedProjectLayout: FeaturedProject,
+  ComponentsSectionsExperiencesLayout: ExperiencesHistory,
   // ComponentsSectionsTextLayout: TextSection,
   // ComponentsSectionsGalleryLayout: GallerySection,
 };

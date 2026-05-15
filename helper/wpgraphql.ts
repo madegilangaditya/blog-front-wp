@@ -154,6 +154,22 @@ export const GET_PAGE_ACF = `
               url
             }
           }
+          ... on ComponentsSectionsExperiencesLayout {
+            experiencesHistory {
+              title
+              historyContent {
+                date
+                title
+                description
+              }
+            }
+            backgroundImage{
+              node{
+                sourceUrl
+                altText
+              }
+            }
+          }
         }
       }
     }
