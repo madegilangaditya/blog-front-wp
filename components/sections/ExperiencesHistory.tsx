@@ -34,17 +34,17 @@ export default function ExperiencesHistory({ data }: ExperienceHistoryProps) {
       >
             <Parallax speed={-40} style={{ backgroundImage: `url(${backgroundImage})` }} className="absolute top-0 left-0 w-full h-[calc(100%+200px)] bg-cover bg-center -z-10 before:bg-[rgba(20,20,20,0.7)] before:w-full before:h-full before:absolute before:top-0" />
 
-            <div className="container relative text-center">
+            <div className="container relative">
                 {data.experiencesHistory && (
-                    <div className="grid lg:grid-cols-3 gap-7.5 mt-10">
+                    <div className="grid lg:grid-cols-[repeat(auto-fit,minmax(180px,1fr))] lg:auto-rows-auto gap-17.5">
                         {data.experiencesHistory.map((experience, index) => (
                             <div key={index}>
-                                {experience.title && <h2 className="font-medium mb-6 text-white">{experience.title}</h2>}
+                                {experience.title && <h2 className="font-medium mb-5 text-white text-left">{experience.title}</h2>}
                                 {experience.historyContent && experience.historyContent.map((history, idx) => (
-                                    <div key={idx} className="service-card bg-[rgba(255,255,255,0.1)] p-10 rounded-lg flex flex-col items-center text-center gap-5 text-white">
-                                        {history.date && <span className="text-sm text-[#888888] mb-2">{history.date}</span>}
+                                    <div key={idx} className="flex flex-col items-start gap-5 text-white mb-7.5 pb-2.5 border-b border-b-[rgba(255,255,255,.1)]">
+                                        {history.date && <span className="text-sm text-white mt-2.5 font-bold py-1.5 px-2.5 border-2 border-[#F4C325]">{history.date}</span>}
                                         {history.title && <h3 className="font-bold text-lg mb-0">{history.title}</h3>}
-                                        {history.description && <div className="text-[15px]/[1.9em]" dangerouslySetInnerHTML={{ __html: sanitize(history.description) }}></div>}
+                                        {history.description && <div className="prose prose-invert max-w-none text-[15px]/[1.9em] mb-5 text-left prose-p:my-0 prose-p:text-[15px]/[1.9em] prose-p:text-[#999] prose-p:mb-4 prose-p:last:mb-0 prose-ul:my-0 prose-ul:pl-5 prose-li:my-0 prose-li:marker:text-[#F4C325] prose-a:text-[#F4C325] prose-a:no-underline hover:prose-a:underline prose-strong:text-white" dangerouslySetInnerHTML={{ __html: sanitize(history.description) }}></div>}
                                     </div>
                                 ))}
                             </div>

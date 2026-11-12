@@ -1,18 +1,22 @@
-// import Hero from "./components/Hero";
-// import { DynamicContent } from "./helper/render-dynamic-content";
-// import { getPageBySlug } from "./helper/strapi";
+import { getPage } from "../helper/wpgraphql";
+import RenderSections from "../helper/render-dynamic-component-wp";
 
-// export default function Home() {
-//   // const response = await getPageBySlug("home");
-//   // const pageData = response?.data?.[0];
-//   return (
-//     <main>
-//       {/* banner home */}
-//       {/* <section className="h-screen">
-        
-//       </section> */}
-//       {/* Dynamic Content from Strapi */}
-//       <Hero></Hero>
-//     </main>
-//   );
-// }
+export default async function Page({ params }: any) {
+  const resolvedParams = await params;
+
+  const slug = resolvedParams.slug?.join("/") || "home";
+  const uri = `/${slug}/`;
+
+  const data = await getPage(uri);
+  console.log("Fetched page data:", data);
+
+  if (!data.page) {
+    return <main>Not found</main>;
+  }
+
+  return (
+    <main>
+      <RenderSections sections={data.page.components?.sections} />
+    </main>
+  );
+}
