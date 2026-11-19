@@ -35,12 +35,20 @@ type FeaturedProjectProps = {
 };
 
 export default async function FeaturedProject({ data }: FeaturedProjectProps) {
+    if (!data) return null;
+
     const isRecent = data.getDataType?.includes("recent");
 
-  const projects = isRecent
-    ? await getProjects(data.maximumProjects ?? 6)
-    : data.manualSelect?.nodes ?? [];
-    console.log("Fetched projects for FeaturedProject:", projects);
+    let fetched: (ProjectNode | null)[] = [];
+    try {
+        fetched = isRecent
+            ? await getProjects(data.maximumProjects ?? 6)
+            : data.manualSelect?.nodes ?? [];
+    } catch (error) {
+        console.error("Failed to fetch projects for FeaturedProject:", error);
+    }
+
+    const projects = fetched.filter((item): item is ProjectNode => Boolean(item?.uri));
 
   return (
    

@@ -4,6 +4,7 @@ import Bio from "../components/sections/Bio";
 import ServicesCard from "../components/sections/ServicesCard";
 import FeaturedProject from "@/components/sections/FeaturedProject";
 import ExperiencesHistory from "@/components/sections/ExperiencesHistory";
+import ResultCounter from "@/components/sections/ResultCounter";
 
 type Section = {
   __typename: string;
@@ -16,18 +17,27 @@ const sectionComponents: Record<string, ComponentType<any>> = {
   ComponentsSectionsServicesCardLayout: ServicesCard,
   ComponentsSectionsFeaturedProjectLayout: FeaturedProject,
   ComponentsSectionsExperiencesLayout: ExperiencesHistory,
+  ComponentsSectionsResultCounterLayout: ResultCounter,
   // ComponentsSectionsTextLayout: TextSection,
   // ComponentsSectionsGalleryLayout: GallerySection,
 };
 
 type RenderSectionsProps = {
-  sections?: Section[];
+  sections?: (Section | null)[] | null;
 };
 
-export default async function RenderSections({ sections = [] }: RenderSectionsProps) {
+export default async function RenderSections({ sections }: RenderSectionsProps) {
+  if (!Array.isArray(sections) || sections.length === 0) {
+    return null;
+  }
+
   return (
     <>
       {sections.map((section, index) => {
+        if (!section?.__typename) {
+          return null;
+        }
+
         const Component = sectionComponents[section.__typename];
 
         if (!Component) {

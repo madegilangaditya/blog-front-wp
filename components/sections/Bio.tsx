@@ -37,6 +37,8 @@ type BioProps = {
 export default function Bio({ data }: BioProps) {
     const ref = useRef<HTMLDivElement>(null);
 
+    if (!data) return null;
+
    
 
     return (
@@ -71,17 +73,17 @@ export default function Bio({ data }: BioProps) {
                     </div>
                 </div>
 
-                {data.addSkill && (
+                {data.addSkill && data.skill && data.skill.length > 0 && (
                     <div className="grid md:grid-cols-3 gap-10 mt-16" ref={ref}>
-                      {data.skill?.map((skill, index) => (
+                      {data.skill.filter(Boolean).map((skill, index) => (
                         <div key={index} >
                             <div className="flex justify-between text-sm mb-2">
                                 <span className="text-brand-gray font-bold">{skill.skillName}</span>
-                                <span className="text-xs text-[#888888]">{skill.rate}%</span>
+                                <span className="text-xs text-[#888888]">{skill.rate ?? 0}%</span>
                             </div>
                           <div className="w-full h-1 bg-gray-300 rounded">
                             <motion.div
-                                whileInView={{ width: `${skill.rate}%` }}
+                                whileInView={{ width: `${skill.rate ?? 0}%` }}
                                 className="h-1 bg-yellow-500 rounded"
                                 style={{ width: `0%` }}
                                 viewport={{ once: true, amount: 0.3 }}

@@ -29,6 +29,8 @@ type ServicesProps = {
 
 export default function ServicesCard({ data }: ServicesProps) {
 
+  if (!data) return null;
+
   const backgroundImage = data.backgroundImage?.node?.sourceUrl || "/6.jpg";
 
   return (
@@ -40,9 +42,9 @@ export default function ServicesCard({ data }: ServicesProps) {
             <div className="container relative text-center">
                 {data.subtitle && <p className="text-sm text-brand-yellow font-bold mb-2">{data.subtitle}</p>}
                 {data.title && <h2 className="font-medium mb-6 text-white">{data.title}</h2>}
-                {data.services && (
+                {data.services && data.services.length > 0 && (
                     <div className="grid lg:grid-cols-3 gap-7.5 mt-10">
-                        {data.services.map((service, index) => (
+                        {data.services.filter(Boolean).map((service, index) => (
                             <div key={index} className="service-card bg-[rgba(255,255,255,0.1)] p-10 rounded-lg flex flex-col items-center text-center gap-5 text-white">
                                 {service.iconImage?.node?.sourceUrl && (
                                     <img

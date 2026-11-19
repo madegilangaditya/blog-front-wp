@@ -31,11 +31,11 @@ export default function Hero({ data }: HeroProps) {
   const y = useTransform(scrollYProgress, [0, 1], [0, -120]);
   const opacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
 
-  const backgroundImage = data.bannerImage?.node?.sourceUrl || "/6.jpg";
+  const backgroundImage = data?.bannerImage?.node?.sourceUrl || "/6.jpg";
 
   const typedStrings =
-    data.animationText
-      ?.map((item) => item.label)
+    data?.animationText
+      ?.map((item) => item?.label)
       .filter((label): label is string => Boolean(label)) || [];
 
   return (
@@ -64,7 +64,7 @@ export default function Hero({ data }: HeroProps) {
         className="container relative z-10 text-center text-white"
       >
         <h1 className="text-5xl md:text-7xl 2xl:text-[120px] font-normal mb-2.5 leading-[1.1]">
-          {data.title || "I'm John Arnold"}
+          {data?.title || "I'm John Arnold"}
         </h1>
 
         {typedStrings.length > 0 && (

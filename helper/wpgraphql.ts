@@ -170,6 +170,12 @@ export const GET_PAGE_ACF = `
               }
             }
           }
+          ... on ComponentsSectionsResultCounterLayout {
+            results{
+              counter
+              title
+            }
+          }
         }
       }
     }
