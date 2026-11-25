@@ -176,6 +176,21 @@ export const GET_PAGE_ACF = `
               title
             }
           }
+          ... on ComponentsSectionsTestimonialLayout {
+            topTitle
+            title
+            testimonials{
+              clientImage{
+                node{
+                  sourceUrl
+                  altText
+              	} 
+              }
+              name
+              company
+              content
+            }
+          }
         }
       }
     }
