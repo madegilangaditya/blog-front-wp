@@ -5,6 +5,7 @@ import ServicesCard from "../components/sections/ServicesCard";
 import FeaturedProject from "@/components/sections/FeaturedProject";
 import ExperiencesHistory from "@/components/sections/ExperiencesHistory";
 import ResultCounter from "@/components/sections/ResultCounter";
+import Testimonials from "../components/sections/Testimonials";
 
 type Section = {
   __typename: string;
@@ -18,6 +19,7 @@ const sectionComponents: Record<string, ComponentType<any>> = {
   ComponentsSectionsFeaturedProjectLayout: FeaturedProject,
   ComponentsSectionsExperiencesLayout: ExperiencesHistory,
   ComponentsSectionsResultCounterLayout: ResultCounter,
+  ComponentsSectionsTestimonialLayout: Testimonials,
   // ComponentsSectionsTextLayout: TextSection,
   // ComponentsSectionsGalleryLayout: GallerySection,
 };

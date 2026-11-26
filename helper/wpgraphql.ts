@@ -177,6 +177,12 @@ export const GET_PAGE_ACF = `
             }
           }
           ... on ComponentsSectionsTestimonialLayout {
+            backgroundImage{
+              node{
+                sourceUrl
+                altText
+              }
+            }
             topTitle
             title
             testimonials{
